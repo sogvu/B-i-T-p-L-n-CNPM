@@ -9,8 +9,34 @@ let transporter = null;
 async function getTransporter() {
   if (transporter) return transporter;
 
+  // Cấu hình SMTP thực nếu được cung cấp trong biến môi trường (.env)
+  const emailHost = process.env.EMAIL_HOST || 'smtp.gmail.com';
+  const emailPort = parseInt(process.env.EMAIL_PORT) || 465;
+  const emailSecure = process.env.EMAIL_SECURE !== 'false'; // Mặc định true cho cổng 465 (SSL)
+  const emailUser = process.env.EMAIL_USER;
+  const emailPass = process.env.EMAIL_PASS;
+
+  if (emailUser && emailPass) {
+    try {
+      transporter = nodemailer.createTransport({
+        host: emailHost,
+        port: emailPort,
+        secure: emailSecure,
+        auth: {
+          user: emailUser,
+          pass: emailPass,
+        },
+      });
+      console.log(`📧 Email service ready - Using SMTP (${emailHost}:${emailPort}) as user: ${emailUser}`);
+      return transporter;
+    } catch (error) {
+      console.error('❌ Failed to create SMTP transporter, falling back to Ethereal:', error);
+    }
+  }
+
   try {
-    // Tạo test account Ethereal
+    // Tạo test account Ethereal nếu không có cấu hình SMTP thực
+    console.log('ℹ️ SMTP credentials not found in env. Setting up Ethereal test mailer...');
     const testAccount = await nodemailer.createTestAccount();
 
     transporter = nodemailer.createTransport({
@@ -130,16 +156,17 @@ async function sendReminderEmail(appointment, doctor, clinic, reminderType) {
     : `[HealthBook] Lịch khám của bạn sau 1 giờ nữa!`;
 
   try {
+    const fromAddress = process.env.EMAIL_USER || 'noreply@healthbook.vn';
     const info = await transport.sendMail({
-      from: '"HealthBook 🏥" <noreply@healthbook.vn>',
+      from: `"HealthBook 🏥" <${fromAddress}>`,
       to: appointment.patient_email,
       subject,
       html: createReminderEmailHTML(appointment, doctor, clinic),
     });
 
     const previewUrl = nodemailer.getTestMessageUrl(info);
-    console.log(`✅ Email sent to ${appointment.patient_email}: ${previewUrl}`);
-    return { messageId: info.messageId, previewUrl };
+    console.log(`✅ Email sent to ${appointment.patient_email}: ${previewUrl || 'Sent via real SMTP (no preview)'}`);
+    return { messageId: info.messageId, previewUrl: previewUrl || null };
   } catch (error) {
     console.error('❌ Email send error:', error);
     return null;
@@ -159,16 +186,17 @@ async function sendConfirmationEmail(appointment, doctor, clinic) {
   );
 
   try {
+    const fromAddress = process.env.EMAIL_USER || 'noreply@healthbook.vn';
     const info = await transport.sendMail({
-      from: '"HealthBook 🏥" <noreply@healthbook.vn>',
+      from: `"HealthBook 🏥" <${fromAddress}>`,
       to: appointment.patient_email,
       subject: `[HealthBook] Xác nhận đặt lịch khám - ${appointment.appointment_id}`,
       html: confirmHTML,
     });
 
     const previewUrl = nodemailer.getTestMessageUrl(info);
-    console.log(`✅ Confirmation email sent: ${previewUrl}`);
-    return { messageId: info.messageId, previewUrl };
+    console.log(`✅ Confirmation email sent to ${appointment.patient_email}: ${previewUrl || 'Sent via real SMTP (no preview)'}`);
+    return { messageId: info.messageId, previewUrl: previewUrl || null };
   } catch (error) {
     console.error('❌ Confirmation email error:', error);
     return null;
@@ -229,16 +257,17 @@ async function sendWelcomeEmail(email, fullName) {
   `;
 
   try {
+    const fromAddress = process.env.EMAIL_USER || 'noreply@healthbook.vn';
     const info = await transport.sendMail({
-      from: '"HealthBook 🏥" <noreply@healthbook.vn>',
+      from: `"HealthBook 🏥" <${fromAddress}>`,
       to: email,
       subject: `[HealthBook] Đăng ký tài khoản thành công - Chào mừng ${fullName}!`,
       html,
     });
 
     const previewUrl = nodemailer.getTestMessageUrl(info);
-    console.log(`✅ Welcome email sent to ${email}: ${previewUrl}`);
-    return { messageId: info.messageId, previewUrl };
+    console.log(`✅ Welcome email sent to ${email}: ${previewUrl || 'Sent via real SMTP (no preview)'}`);
+    return { messageId: info.messageId, previewUrl: previewUrl || null };
   } catch (error) {
     console.error('❌ Welcome email error:', error);
     return null;
