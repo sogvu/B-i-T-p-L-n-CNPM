@@ -133,12 +133,11 @@ export default function Navbar() {
             <Link
               key={link.path}
               to={link.path}
+              className="nav-item"
               style={{
-                padding: '8px 14px',
                 borderRadius: '10px',
                 textDecoration: 'none',
                 fontWeight: 600,
-                fontSize: '0.85rem',
                 transition: 'all 0.2s',
                 color: link.isEmergency 
                   ? '#ef4444' 
@@ -214,7 +213,7 @@ export default function Navbar() {
               style={{ padding: '8px 18px', fontSize: '0.85rem' }}
             >
               <Calendar size={16} />
-              Đặt lịch
+              <span className="nav-book-text">Đặt lịch</span>
             </Link>
           )}
 
@@ -309,7 +308,7 @@ export default function Navbar() {
           ) : (
             <Link
               to="/login"
-              className="btn-secondary"
+              className="btn-secondary nav-login-btn"
               style={{ padding: '8px 18px', fontSize: '0.85rem', fontWeight: 700 }}
             >
               Đăng nhập
@@ -397,12 +396,28 @@ export default function Navbar() {
       </AnimatePresence>
 
       <style>{`
+        .nav-item {
+          padding: 8px 14px;
+          font-size: 0.85rem;
+        }
+        @media (max-width: 1300px) {
+          .nav-item {
+            padding: 8px 10px !important;
+            font-size: 0.8rem !important;
+          }
+        }
         @media (min-width: 1100px) {
           .nav-username { display: inline !important; }
         }
-        @media (max-width: 950px) {
+        @media (max-width: 1200px) {
           .desktop-nav { display: none !important; }
           .mobile-menu-btn { display: flex !important; }
+        }
+        @media (max-width: 500px) {
+          .nav-book-text { display: none !important; }
+        }
+        @media (max-width: 600px) {
+          .nav-login-btn { display: none !important; }
         }
       `}</style>
     </motion.nav>
