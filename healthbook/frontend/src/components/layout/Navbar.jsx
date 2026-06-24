@@ -78,7 +78,7 @@ export default function Navbar() {
         right: scrolled ? '3%' : '0px',
         margin: '0 auto',
         width: scrolled ? '94%' : '100%',
-        maxWidth: scrolled ? '1440px' : '100%',
+        maxWidth: scrolled ? '1600px' : '100%',
         borderRadius: scrolled ? '20px' : '0px',
         zIndex: 100,
         transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -93,9 +93,9 @@ export default function Navbar() {
         justifyContent: 'space-between',
         height: '70px',
         width: '100%',
-        maxWidth: '1440px',
+        maxWidth: '100%',
         margin: '0 auto',
-        padding: scrolled ? '0 2rem' : '0 3.5rem',
+        padding: scrolled ? '0 3rem' : '0 5rem',
         transition: 'padding 0.3s ease',
       }}>
         {/* Logo */}
