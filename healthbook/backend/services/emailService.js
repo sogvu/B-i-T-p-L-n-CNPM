@@ -175,4 +175,74 @@ async function sendConfirmationEmail(appointment, doctor, clinic) {
   }
 }
 
-module.exports = { sendReminderEmail, sendConfirmationEmail, getTransporter };
+/**
+ * Gửi email chào mừng khi đăng ký tài khoản thành công
+ */
+async function sendWelcomeEmail(email, fullName) {
+  const transport = await getTransporter();
+  if (!transport) return null;
+
+  const html = `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f7fb; margin: 0; padding: 0; }
+    .container { max-width: 600px; margin: 40px auto; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
+    .header { background: linear-gradient(135deg, #2563EB 0%, #1e40af 100%); color: white; padding: 32px; text-align: center; }
+    .header h1 { margin: 0; font-size: 24px; font-weight: 700; }
+    .body { padding: 32px; }
+    .greeting { font-size: 18px; color: #1e293b; margin-bottom: 16px; }
+    .logo { font-size: 20px; font-weight: 800; color: white; }
+    .logo span { color: #93c5fd; }
+    .footer { background: #f8faff; padding: 24px; text-align: center; border-top: 1px solid #e2e8f0; }
+    .footer p { color: #94a3b8; font-size: 12px; margin: 4px 0; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">Health<span>Book</span></div>
+      <h1>👋 Chào mừng bạn mới!</h1>
+    </div>
+    <div class="body">
+      <p class="greeting">Xin chào <strong>${fullName}</strong>,</p>
+      <p style="color:#475569; font-size:15px; line-height: 1.6;">
+        Chào mừng bạn đã đăng ký tài khoản thành công tại <strong>HealthBook Plus</strong> - Nền tảng đặt lịch khám sức khỏe trực tuyến thông minh.
+      </p>
+      <p style="color:#475569; font-size:15px; line-height: 1.6;">
+        Tài khoản của bạn đã sẵn sàng hoạt động. Bây giờ bạn có thể dễ dàng tìm kiếm bác sĩ chuyên khoa, đặt lịch hẹn khám sức khỏe, và quản lý lịch hẹn trực tuyến nhanh chóng.
+      </p>
+      <p style="color:#475569; font-size:15px; line-height: 1.6;">
+        Chúc bạn có nhiều trải nghiệm chăm sóc sức khỏe tuyệt vời cùng HealthBook!
+      </p>
+    </div>
+    <div class="footer">
+      <p>Email này được gửi tự động từ hệ thống <strong>HealthBook</strong></p>
+      <p>Nếu bạn có thắc mắc, vui lòng liên hệ hotline: <strong>1900-1234</strong></p>
+      <p style="margin-top:12px;color:#cbd5e1;">© 2026 HealthBook. All rights reserved.</p>
+    </div>
+  </div>
+</body>
+</html>
+  `;
+
+  try {
+    const info = await transport.sendMail({
+      from: '"HealthBook 🏥" <noreply@healthbook.vn>',
+      to: email,
+      subject: `[HealthBook] Đăng ký tài khoản thành công - Chào mừng ${fullName}!`,
+      html,
+    });
+
+    const previewUrl = nodemailer.getTestMessageUrl(info);
+    console.log(`✅ Welcome email sent to ${email}: ${previewUrl}`);
+    return { messageId: info.messageId, previewUrl };
+  } catch (error) {
+    console.error('❌ Welcome email error:', error);
+    return null;
+  }
+}
+
+module.exports = { sendReminderEmail, sendConfirmationEmail, sendWelcomeEmail, getTransporter };

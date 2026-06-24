@@ -72,4 +72,9 @@ export const chatbotApi = {
   chat: (message, history) => api.post('/chatbot/chat', { message, history }),
 };
 
+// Auth API
+export const authApi = {
+  sendRegisterEmail: (data) => api.post('/auth/register-email', data),
+};
+
 export default api;

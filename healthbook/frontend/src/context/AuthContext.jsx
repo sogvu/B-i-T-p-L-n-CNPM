@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { authApi } from '../services/api';
 
 const AuthContext = createContext();
 
@@ -100,6 +101,15 @@ export function AuthProvider({ children }) {
 
         users.push(newUser);
         localStorage.setItem('hb_users', JSON.stringify(users));
+
+        // Gửi email chào mừng
+        authApi.sendRegisterEmail({
+          email: newUser.email,
+          fullName: newUser.fullName
+        }).catch(err => {
+          console.error('Không thể gửi email chào mừng:', err);
+        });
+
         resolve({ success: true });
       }, 500);
     });

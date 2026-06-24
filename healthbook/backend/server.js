@@ -25,7 +25,7 @@ const appointmentsRouter = require('./routes/appointments');
 const adminRouter = require('./routes/admin');
 const chatbotRouter = require('./routes/chatbot');
 const { readCSV } = require('./services/csvService');
-const { sendReminderEmail } = require('./services/emailService');
+const { sendReminderEmail, sendWelcomeEmail } = require('./services/emailService');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -55,6 +55,26 @@ app.use('/api/doctors', doctorsRouter);
 app.use('/api/appointments', appointmentsRouter);
 app.use('/api/admin', adminRouter);
 app.use('/api/chatbot', chatbotRouter);
+
+// Route gửi email đăng ký tài khoản thành công
+app.post('/api/auth/register-email', async (req, res) => {
+  const { email, fullName } = req.body;
+  if (!email || !fullName) {
+    return res.status(400).json({ success: false, message: 'Thiếu email hoặc tên đầy đủ' });
+  }
+
+  try {
+    const emailResult = await sendWelcomeEmail(email, fullName);
+    res.json({
+      success: true,
+      message: 'Gửi email chào mừng thành công!',
+      previewUrl: emailResult?.previewUrl || null
+    });
+  } catch (err) {
+    console.error('❌ Lỗi gửi email chào mừng:', err);
+    res.status(500).json({ success: false, message: 'Không thể gửi email chào mừng' });
+  }
+});
 
 // Health check
 app.get('/api/health', (req, res) => {
