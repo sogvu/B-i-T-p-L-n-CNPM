@@ -1,7 +1,10 @@
 import axios from 'axios';
 
+// Thay thế URL dưới đây bằng URL Backend của bạn sau khi deploy (ví dụ: trên Render)
+const BACKEND_URL = 'https://bai-tap-lon-song-vu.onrender.com';
+
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: import.meta.env.PROD ? `${BACKEND_URL}/api` : '/api',
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
