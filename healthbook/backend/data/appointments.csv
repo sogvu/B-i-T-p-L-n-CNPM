@@ -1,0 +1,7 @@
+appointment_id,patient_name,patient_email,patient_phone,doctor_id,clinic_id,appointment_date,appointment_time,symptoms,status,created_at
+APT001,Nguyễn Minh Tuấn,tuannm@gmail.com,0901-111-222,D001,C001,2026-06-25,09:00,Đau ngực tức ngực,confirmed,2026-06-20T08:00:00Z
+APT002,Trần Thị Lan,lantran@gmail.com,0902-222-333,D002,C002,2026-06-25,10:00,Nổi mẩn đỏ ngứa,confirmed,2026-06-20T09:00:00Z
+APT003,Lê Văn Hùng,hunglv@gmail.com,0903-333-444,D003,C003,2026-06-26,14:00,Đau đầu chóng mặt,pending,2026-06-21T10:00:00Z
+APT004,Phạm Thị Hoa,hoapt@gmail.com,0904-444-555,D004,C009,2026-06-27,09:30,Con sốt ho nhiều,confirmed,2026-06-21T11:00:00Z
+APT005,Hoàng Văn Bình,binhhv@gmail.com,0905-555-666,D005,C005,2026-06-28,11:00,Đau bụng buồn nôn,pending,2026-06-22T08:00:00Z
+APTBA88D576,dong song vu,songvuoffice@gmail.com,0559354581,D003,C003,2026-06-25,09:30,dhdeheh,confirmed,2026-06-24T02:26:43.730Z

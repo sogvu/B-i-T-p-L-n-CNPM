@@ -1,0 +1,11 @@
+clinic_id,clinic_name,address,district,city,latitude,longitude,phone,rating,image
+C001,Bệnh viện Đại Nam,Đường Nguyễn Trãi,Hà Đông,Hà Nội,20.9717,105.7792,024-3858-3858,4.5,hospital1
+C002,Phòng khám Medlatec,42 Nghĩa Dũng,Ba Đình,Hà Nội,21.0408,105.8214,024-3732-3732,4.7,clinic2
+C003,Bệnh viện Bạch Mai,78 Giải Phóng,Đống Đa,Hà Nội,21.0022,105.8412,024-3869-3869,4.6,hospital3
+C004,Phòng khám Thu Cúc,286 Thụy Khuê,Tây Hồ,Hà Nội,21.0512,105.8243,024-3588-3588,4.4,clinic4
+C005,Bệnh viện Việt Đức,40 Tràng Thi,Hoàn Kiếm,Hà Nội,21.0289,105.8471,024-3825-3825,4.8,hospital5
+C006,Phòng khám FV,6 Nguyễn Lương Bằng,Phú Mỹ Hưng,Hồ Chí Minh,10.7306,106.7023,028-5411-3333,4.9,clinic6
+C007,Bệnh viện Chợ Rẫy,201B Nguyễn Chí Thanh,Quận 5,Hồ Chí Minh,10.7538,106.6605,028-3855-4137,4.7,hospital7
+C008,Phòng khám Hoàn Mỹ,60 Tân Hải,Quận Tân Bình,Hồ Chí Minh,10.8021,106.6587,028-3812-2333,4.5,clinic8
+C009,Bệnh viện Nhi Đồng 1,341 Sư Vạn Hạnh,Quận 10,Hồ Chí Minh,10.7715,106.6703,028-3927-1119,4.6,hospital9
+C010,Phòng khám Vinmec,458 Minh Khai,Hai Bà Trưng,Hà Nội,21.0101,105.8617,024-3974-3556,4.8,clinic10

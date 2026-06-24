@@ -1,0 +1,21 @@
+doctor_id,doctor_name,specialty,clinic_id,experience,email,phone,rating,bio
+D001,TS.BS Nguyễn Văn Anh,Tim mạch,C001,15,bsanh.timmach@email.com,0912-345-678,4.8,Chuyên gia tim mạch can thiệp với 15 năm kinh nghiệm. Từng tu nghiệp tại Pháp và Đức.
+D002,BS.CKII Trần Thị Bình,Da liễu,C002,12,bsbinh.dalieu@email.com,0913-456-789,4.7,Bác sĩ da liễu thẩm mỹ hàng đầu Hà Nội. Chuyên trị mụn và các bệnh da mãn tính.
+D003,PGS.TS Lê Văn Cường,Thần kinh,C003,20,bscuong.thankinh@email.com,0914-567-890,4.9,Giáo sư thần kinh học. Chuyên gia đột quỵ và các bệnh lý não bộ phức tạp.
+D004,BS.CKI Phạm Thị Dung,Nhi khoa,C009,10,bsdung.nhi@email.com,0915-678-901,4.8,Bác sĩ nhi chuyên về dinh dưỡng trẻ em và các bệnh hô hấp nhi.
+D005,TS.BS Hoàng Văn Em,Tiêu hóa,C005,18,bsem.tieuhoa@email.com,0916-789-012,4.7,Chuyên gia nội soi tiêu hóa. Điều trị viêm loét dạ dày và ung thư đường tiêu hóa.
+D006,BS.CKII Nguyễn Thị Phương,Sản phụ khoa,C006,14,bsphuong.sankhoa@email.com,0917-890-123,4.9,Chuyên gia sản khoa cao nguy cơ. Thực hiện hàng ngàn ca đẻ thành công.
+D007,TS.BS Võ Văn Giang,Chỉnh hình,C007,16,bsgiang.chinhhinh@email.com,0918-901-234,4.6,Chuyên gia phẫu thuật khớp và cột sống. Áp dụng kỹ thuật nội soi hiện đại.
+D008,BS.CKI Đặng Thị Hoa,Mắt,C004,9,bshoa.mat@email.com,0919-012-345,4.7,Bác sĩ nhãn khoa chuyên về phẫu thuật khúc xạ LASIK và điều trị cườm mắt.
+D009,PGS.TS Bùi Văn Inh,Nội tiết,C010,22,bsinh.noitiet@email.com,0920-123-456,4.8,Chuyên gia đái tháo đường và rối loạn tuyến giáp. Trưởng khoa Nội tiết Vinmec.
+D010,BS.CKII Lý Thị Kim,Hô hấp,C003,13,bskim.hohap@email.com,0921-234-567,4.6,Bác sĩ hô hấp học chuyên điều trị hen suyễn và bệnh phổi tắc nghẽn mãn tính.
+D011,TS.BS Trần Văn Long,Tiết niệu,C007,17,bslong.tietnieutiet@email.com,0922-345-678,4.7,Chuyên gia phẫu thuật tiết niệu nội soi. Điều trị sỏi thận và u tiền liệt tuyến.
+D012,BS.CKI Nguyễn Thị Mai,Tâm thần,C008,11,bsmai.tamthan@email.com,0923-456-789,4.5,Bác sĩ tâm thần chuyên về lo âu trầm cảm và rối loạn giấc ngủ.
+D013,TS.BS Phan Văn Nam,Ung bướu,C005,19,bsnam.ungbuou@email.com,0924-567-890,4.8,Chuyên gia ung thư học. Điều trị đa mô thức ung thư vú và đại tràng.
+D014,BS.CKII Vũ Thị Oanh,Tai Mũi Họng,C002,12,bsoanh.taimuihong@email.com,0925-678-901,4.6,Bác sĩ TMH chuyên phẫu thuật VA amidan và điều trị viêm xoang mãn tính.
+D015,PGS.TS Đinh Văn Phong,Cơ xương khớp,C001,21,bsphong.coxuongkhop@email.com,0926-789-012,4.9,Giáo sư cơ xương khớp. Chuyên gia viêm khớp dạng thấp và lupus ban đỏ.
+D016,BS.CKI Hồ Thị Quỳnh,Dinh dưỡng,C010,8,bsquynh.dinhdưỡng@email.com,0927-890-123,4.5,Bác sĩ dinh dưỡng lâm sàng. Tư vấn chế độ ăn cho bệnh nhân béo phì và tiểu đường.
+D017,TS.BS Chu Văn Rộng,Tim mạch,C006,16,bsrong.timmach@email.com,0928-901-234,4.8,Chuyên gia tim mạch can thiệp tại FV Hospital. Thực hiện đặt stent và tạo nhịp tim.
+D018,BS.CKII Lê Thị Sương,Da liễu,C009,10,bssuong.dalieu@email.com,0929-012-345,4.7,Bác sĩ da liễu chuyên điều trị bệnh da ở trẻ em và thiếu niên.
+D019,TS.BS Ngô Văn Thắng,Thần kinh,C008,14,bsthang.thankinh@email.com,0930-123-456,4.6,Chuyên gia thần kinh ngoại biên. Điều trị đau đầu migraine và chóng mặt.
+D020,BS.CKI Trịnh Thị Uyên,Nhi khoa,C006,7,bsuyen.nhi@email.com,0931-234-567,4.8,Bác sĩ nhi chuyên về tiêm chủng và phát triển tâm thần vận động trẻ.
