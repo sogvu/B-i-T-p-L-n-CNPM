@@ -5,6 +5,7 @@ import {
   Shield, Info, Check, MessageSquare, Star, Clock
 } from 'lucide-react';
 import emergency3d from '../assets/3d_emergency.png';
+import CprCoach from '../components/emergency/CprCoach';
 
 const EMERGENCY_INCIDENTS = [
   {
@@ -209,6 +210,9 @@ export default function EmergencyPage() {
           </a>
 
         </div>
+
+        {/* CPR Coach Section */}
+        <CprCoach />
 
         {/* First Aid & Incidents */}
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginBottom: '2.5rem' }} className="emergency-body-grid">
