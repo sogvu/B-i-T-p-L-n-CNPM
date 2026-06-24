@@ -73,11 +73,17 @@ export default function Navbar() {
       animate={{ y: 0 }}
       style={{
         position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
+        top: scrolled ? '15px' : '0px',
+        left: scrolled ? '5%' : '0px',
+        right: scrolled ? '5%' : '0px',
+        margin: '0 auto',
+        width: scrolled ? '90%' : '100%',
+        maxWidth: scrolled ? '1280px' : '100%',
+        borderRadius: scrolled ? '20px' : '0px',
         zIndex: 100,
-        transition: 'all 0.3s ease',
+        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+        border: scrolled ? '1.5px solid var(--color-border)' : 'none',
+        borderTop: scrolled ? '1.5px solid var(--color-border)' : 'none',
       }}
       className={scrolled ? 'glass shadow-lg' : ''}
     >
@@ -127,7 +133,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Links */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
+        <div style={{ display: 'flex', alignItems: 'center' }}
           className="desktop-nav">
           {visibleLinks.map((link) => (
             <Link
@@ -397,13 +403,19 @@ export default function Navbar() {
 
       <style>{`
         .nav-item {
-          padding: 8px 14px;
-          font-size: 0.85rem;
+          padding: 8px 16px;
+          font-size: 0.88rem;
+        }
+        .desktop-nav {
+          gap: 20px;
         }
         @media (max-width: 1300px) {
           .nav-item {
             padding: 8px 10px !important;
             font-size: 0.8rem !important;
+          }
+          .desktop-nav {
+            gap: 8px !important;
           }
         }
         @media (min-width: 1100px) {
