@@ -1,5 +1,7 @@
+import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
+import { AnimatePresence } from 'framer-motion';
 import { ThemeProvider } from './context/ThemeContext';
 import { AuthProvider } from './context/AuthContext';
 import Navbar from './components/layout/Navbar';
@@ -20,11 +22,30 @@ import NotificationsPage from './pages/NotificationsPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import ChatbotWidget from './components/common/ChatbotWidget';
+import IntroScreen from './components/common/IntroScreen';
 
 function App() {
+  const [showIntro, setShowIntro] = useState(false);
+
+  useEffect(() => {
+    // Chỉ hiển thị intro một lần duy nhất mỗi phiên duyệt web (session)
+    const hasShownIntro = sessionStorage.getItem('hb_intro_shown');
+    if (!hasShownIntro) {
+      setShowIntro(true);
+    }
+  }, []);
+
+  const handleIntroComplete = () => {
+    sessionStorage.setItem('hb_intro_shown', 'true');
+    setShowIntro(false);
+  };
+
   return (
     <ThemeProvider>
       <AuthProvider>
+        <AnimatePresence>
+          {showIntro && <IntroScreen onComplete={handleIntroComplete} />}
+        </AnimatePresence>
         <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, "")}>
           <div style={{ minHeight: '100vh', background: 'var(--color-bg)', color: 'var(--color-text)' }}>
             <Navbar />
