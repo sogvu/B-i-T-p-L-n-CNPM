@@ -74,11 +74,11 @@ export default function Navbar() {
       style={{
         position: 'fixed',
         top: scrolled ? '15px' : '0px',
-        left: scrolled ? '5%' : '0px',
-        right: scrolled ? '5%' : '0px',
+        left: scrolled ? '3%' : '0px',
+        right: scrolled ? '3%' : '0px',
         margin: '0 auto',
-        width: scrolled ? '90%' : '100%',
-        maxWidth: scrolled ? '1280px' : '100%',
+        width: scrolled ? '94%' : '100%',
+        maxWidth: scrolled ? '1440px' : '100%',
         borderRadius: scrolled ? '20px' : '0px',
         zIndex: 100,
         transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -87,7 +87,17 @@ export default function Navbar() {
       }}
       className={scrolled ? 'glass shadow-lg' : ''}
     >
-      <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '70px' }}>
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        height: '70px',
+        width: '100%',
+        maxWidth: '1440px',
+        margin: '0 auto',
+        padding: scrolled ? '0 2rem' : '0 3.5rem',
+        transition: 'padding 0.3s ease',
+      }}>
         {/* Logo */}
         <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
           <motion.div
