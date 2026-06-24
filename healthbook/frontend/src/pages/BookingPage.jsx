@@ -82,6 +82,11 @@ export default function BookingPage() {
     }
   }, [selectedDoctor, selectedDate]);
 
+  // Tự động lướt lên đầu trang khi chuyển bước (bao gồm khi đặt lịch xong sang bước 5)
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [step]);
+
   async function loadDoctors() {
     try {
       const res = await doctorsApi.getAll();
